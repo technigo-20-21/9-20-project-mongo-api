@@ -63,7 +63,6 @@ app.get("/", (req, res) => {
 
 app.get("/books", async (req, res) => {
   const books = await Book.find(req.query);
-  console.log(books);
   res.json(books);
 });
 
