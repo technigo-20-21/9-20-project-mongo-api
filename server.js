@@ -9,7 +9,10 @@ dotenv.config();
 import booksData from "./data/books.json";
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/project-mongo";
-mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true }).
+  catch(error => {
+    console.log(`Cannot connect to database: ${error}`)
+  });
 mongoose.Promise = Promise;
 
 const port = process.env.PORT || 8080;
